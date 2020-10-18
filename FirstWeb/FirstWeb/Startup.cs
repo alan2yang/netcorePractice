@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using FirstWeb.Repository;
 
 namespace FirstWeb
 {
@@ -24,6 +26,9 @@ namespace FirstWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContextPool<AppDBContext>(options=>options.UseSqlite("Data Source=blogging.db"));  //≈‰÷√ ˝æ›ø‚
+
+            services.AddScoped<IStudentRepository, StudentRepository>();  //“¿¿µ◊¢»Î
 
         }
 
